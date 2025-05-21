@@ -12,6 +12,7 @@ export default function Croissant() {
   const psyState = usePsyStore( (state) => state );
 
   const nextStep = function(){
+    console.log("NEXT");
     
     if(psyState.state >= 3) return;
 
@@ -44,8 +45,8 @@ export default function Croissant() {
       <div className="w-screen h-screen bg-gray-200 flex justify-center items-center">
         { psyState.state == 0 && <StartPage nextStep={nextStep} />}
         { psyState.state == 1 && <QuestionPage nextStep={nextStep} questionIndex={psyState.questionState} />}
-        { psyState.state == 2 && <DisplayResultPage/>}
-        { psyState.state == 3 && <ResultPage/>}
+        { psyState.state == 2 && <DisplayResultPage nextStep={nextStep} />}
+        { psyState.state == 3 && <ResultPage />}
         
         {/* <div onClick={prevStep}>上一步</div>
         <div onClick={nextStep}>下一步</div> */}
